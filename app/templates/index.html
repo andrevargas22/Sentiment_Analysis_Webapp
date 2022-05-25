@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="static/styles.css">
+
+        <!-- Page Title -->
+        <title>Sentiment Analysis</title>
+
+    </head>
+
+    <body>
+
+        <div class="sentiment_description">
+
+            <p>
+                This web app runs a Sentiment Analysis machine learning model using Recurrent Neural Networks, trained in a dataset of labeled movie reviews (positive or negative).
+            </p>
+
+            <p>
+                Enter any text in English and hit the submit button. The Machine Learning model will say if the entered text has a positive or a negative tone.
+            </p>
+
+        </div>
+
+        <form action="{{ url_for('sentiment_results') }}" method="post">
+            <textarea class="sentiment_text" name="textArea1" rows=7></textarea>
+            <br>
+            <input class="submit_btn" type="submit">
+        </form>
+
+    </body>
+
+    </html>
