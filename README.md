@@ -36,7 +36,7 @@ On Linux:
 
 ### Results:
 
-![alt text](https://github.com/andrevargas22/Digit_Recognizer_Webapp/blob/main/static/digit1.PNG)
-![alt text](https://github.com/andrevargas22/Digit_Recognizer_Webapp/blob/main/static/digit2.PNG)
+![alt text](https://github.com/andrevargas22/Sentiment_Analysis_Webapp/blob/main/img/1.png)
+![alt text](https://github.com/andrevargas22/Sentiment_Analysis_Webapp/blob/main/img/2.png)
 
-This app is also currently available here: http://andrevargas22.pythonanywhere.com/digit_recognizer
+This app is also currently available here: http://andrevargas22.pythonanywhere.com/sentiment_analysis
