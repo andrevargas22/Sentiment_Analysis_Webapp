@@ -37,6 +37,6 @@ On Linux:
 ### Results:
 
 ![alt text](https://github.com/andrevargas22/Sentiment_Analysis_Webapp/blob/main/img/1.png)
+
 ![alt text](https://github.com/andrevargas22/Sentiment_Analysis_Webapp/blob/main/img/2.png)
 
-This app is also currently available here: http://andrevargas22.pythonanywhere.com/sentiment_analysis
