@@ -1,6 +1,6 @@
 # Docker build and push API container to Artifact Registry, deploy on Cloud Run
 
-name: Deploy Flask Website
+name: Deploy Sentiment Analysis API
 
 on:
   push:
@@ -18,36 +18,35 @@ jobs:
       SERVICE_ACCOUNT: site-sa
       SERVICE_NAME: sentiment_analysis_api
 
-steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v3
 
-    - id: 'auth'
-      name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v1
-      with: 
-        project_id: '${{ env.PROJECT_ID }}'
-        credentials_json: '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}'
-    
-    - name: 'Docker config'
-      run: |-
-        gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev 
+        - id: 'auth'
+          name: Authenticate to Google Cloud
+          uses: google-github-actions/auth@v1
+          with: 
+            project_id: '${{ env.PROJECT_ID }}'
+            credentials_json: '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}'
+        
+        - name: 'Docker config'
+          run: |-
+            gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev 
 
-    - name: 'Build container'
-      run: |-
-        docker build -t "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/website:${{ github.sha }}" .
-      
-    - name: 'Push container'
-      run: |-
-        docker push "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/website:${{ github.sha }}"
-    
-    - name: Deploy Google Cloud Run
-      run: |
-        gcloud run deploy "${{ env.SERVICE_NAME }}" \
-          --image "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/website:${{ github.sha }}" \
-          --region "${{ env.REGION }}" \
-          --service-account "${{ env.SERVICE_ACCOUNT }}" \
-          --memory 2Gi \
-          --allow-unauthenticated \
-          --port 8000
-
+        - name: 'Build container'
+          run: |-
+            docker build -t "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/website:${{ github.sha }}" .
+          
+        - name: 'Push container'
+          run: |-
+            docker push "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/website:${{ github.sha }}"
+        
+        - name: Deploy Google Cloud Run
+          run: |
+            gcloud run deploy "${{ env.SERVICE_NAME }}" \
+              --image "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/website:${{ github.sha }}" \
+              --region "${{ env.REGION }}" \
+              --service-account "${{ env.SERVICE_ACCOUNT }}" \
+              --memory 2Gi \
+              --allow-unauthenticated \
+              --port 8000
