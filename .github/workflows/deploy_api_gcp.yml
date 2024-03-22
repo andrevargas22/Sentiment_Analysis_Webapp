@@ -1,4 +1,4 @@
-# Docker build and push API container to Artifact Registry, deploy on Cloud Run
+# Docker build and push API to Artifact Registry, deploy on Cloud Run 
 
 name: Deploy Sentiment Analysis API
 
