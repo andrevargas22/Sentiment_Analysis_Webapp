@@ -1,11 +1,7 @@
 from fastapi import FastAPI
 import mlflow.pyfunc
-import numpy as np
-
 import mlflow
 import re
-import requests
-import os
 from bs4 import BeautifulSoup
 import nltk
 from nltk.corpus import stopwords
@@ -51,7 +47,7 @@ loaded_model = mlflow.pyfunc.load_model(model_uri=model_uri)
 app = FastAPI()
 
 @app.post("/predict")
-def predict_sentiment(text):
+def predict_sentiment(data: dict):
     """
     Predicts the sentiment of the input text.
     Args:
@@ -59,6 +55,12 @@ def predict_sentiment(text):
     Returns:
         The predicted sentiment label (e.g., positive, negative).
     """
+    
+    text = data.get("text")
+    print(text)
+    
+    if not text:
+        return {"error": "Text field is required."}
     
     features = preprocess_input(text)
     
