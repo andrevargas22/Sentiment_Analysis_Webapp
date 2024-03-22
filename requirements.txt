@@ -23,3 +23,5 @@ google-cloud-secret-manager==2.15.1
 
 beautifulsoup4==4.12.3
 nltk==3.8.1
+xgboost==2.0.3
+
