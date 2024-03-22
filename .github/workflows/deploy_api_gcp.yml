@@ -16,7 +16,7 @@ jobs:
       PROJECT_ID: my-website-416300          
       REPOSITORY: website-repo
       SERVICE_ACCOUNT: site-sa
-      SERVICE_NAME: sentiment_analysis_api
+      SERVICE_NAME: sentiment-analysis-api
 
     steps:
         - name: Checkout
