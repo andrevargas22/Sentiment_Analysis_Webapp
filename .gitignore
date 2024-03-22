@@ -2,4 +2,5 @@ __pycache__/
 app/__pycache__/
 model/
 data/
-cache/
+cache/sentiment_analysis/bow_features.pkl
+cache/sentiment_analysis/preprocessed_data.pkl
